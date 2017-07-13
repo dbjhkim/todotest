@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -9,13 +10,19 @@ module.exports = {
     filename: 'build.js'
   },
   module: {
-    rules: [
+    rules: [{
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          //resolve-url-loader may be chained before sass-loader if necessary
+          use: ['css-loader', 'sass-loader']
+        })
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          loaders: {
-          }
+          loaders: {}
           // other vue-loader options go here
         }
       },
@@ -33,6 +40,13 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new ExtractTextPlugin('style.css')
+    //if you want to pass in options, you can do so:
+    //new ExtractTextPlugin({
+    //  filename: 'style.css'
+    //})
+  ],
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
