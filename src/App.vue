@@ -1,27 +1,35 @@
 <template>
 <div id="app">
-  <input v-model="newTodo" v-on:keyup.enter="addTodo">
-  <button v-on:click="addTodo">+</button>
+  <todo-add v-bind:mm="mm"></todo-add>
+  <todo-list v-bind:mm="mm"></todo-list>
+  <todo-footer v-bind:mm="mm"></todo-footer>
 </div>
 </template>
 
 <script>
+import TodoAdd from './components/TodoAdd.vue';
+import TodoList from './components/TodoList.vue';
+import TodoFooter from './components/TodoFooter.vue';
+import MainModel from './MainModel.js';
+
 export default {
   name: 'app',
   data() {
     return {
-      newTodo: 'Initial Todo Message'
+      mm: MainModel
     }
   },
-  methods: {
-    addTodo: function() {
-      var value = this.newTodo && this.newTodo.trim()
-      if (value) {
-        console.log('new todo: ' + value)
-      } else {
-        console.log('no new todo')
+  watch: {
+    mm: {
+      handler(mm) {
+        console.log('changed, mm: ' + mm);
       }
     }
+  },
+  components: {
+    'todo-add': TodoAdd,
+    'todo-list': TodoList,
+    'todo-footer': TodoFooter
   }
 }
 </script>

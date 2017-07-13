@@ -1,5 +1,6 @@
 .DS_Store
 node_modules/
+# do not ignore dist for github pages
 # dist/
 npm-debug.log
 yarn-error.log
