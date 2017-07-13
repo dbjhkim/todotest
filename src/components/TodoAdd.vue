@@ -19,7 +19,7 @@ export default {
     this.mm.focus();
   },
   methods: {
-    addTodo: function() {
+    addTodo() {
       var value = this.newTodo && this.newTodo.trim();
       this.newTodo = '';
       this.mm.addTodo(value);
