@@ -1,6 +1,12 @@
 # todotest
 
-> A Vue.js project
+> A Vue.js project for a simple todo list test application
+
+
+## Demo
+
+> https://dbjhkim.github.io/todotest/
+
 
 ## Build Setup
 
