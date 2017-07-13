@@ -16,15 +16,14 @@ export default {
   name: 'app',
   data() {
     return {
-      mm: MainModel
+      mm: MainModel,
+      todos: MainModel.todos
     }
   },
   watch: {
-    mm: {
-      handler(mm) {
-        console.log('changed, mm: ' + mm);
-      }
-    }
+    todos() {
+      this.mm.focus();
+    },
   },
   components: {
     'todo-add': TodoAdd,
