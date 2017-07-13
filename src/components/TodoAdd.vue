@@ -1,6 +1,6 @@
 <template>
 <section>
-  <input v-model="newTodo" ref="newTodo" v-on:keyup.enter="addTodo">
+  <input v-model="newTodo" ref="newTodo" v-on:keyup.enter="addTodo" placeholder="여기에 문자열 입력">
   <button v-on:click="addTodo">+</button>
 </section>
 </template>
